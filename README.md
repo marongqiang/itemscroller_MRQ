@@ -1,34 +1,211 @@
-Item Scroller
-==============
-Item Scroller is a Minecraft mod that adds various convenience features for moving items
-inside inventory GUIs. Examples are scrolling the mouse wheel over slots with items in them
-or Shift/Ctrl + click + dragging over slots to move items from them in various ways etc.
+# Item Scroller — 物品滚轮移动模组
 
-Item scrolling is basically what the old NEI mod did and Mouse Tweaks also does.
-This mod has some different drag features compared to Mouse Tweaks, and also some special
-villager trading related helper features as well as crafting helper features.
+**版本**: 0.22.0 | **Minecraft**: 1.20.1 Fabric | **Java**: 17
 
-For more information and downloads of the already compiled builds,
-see https://www.curseforge.com/minecraft/mc-mods/item-scroller
+Item Scroller 是一个 Minecraft 客户端模组，通过鼠标滚轮、拖拽和键盘快捷键大幅提升在物品栏、箱子等容器中移动物品的效率。同时提供合成辅助和村民交易辅助功能。
 
-## MRQ 修复
+---
 
-本分支基于上游代码进行了以下 bug 修复：
+## 目录
+
+- [物品移动功能](#物品移动功能)
+- [合成辅助功能](#合成辅助功能)
+- [村民交易辅助功能](#村民交易辅助功能)
+- [物品丢弃功能](#物品丢弃功能)
+- [使用方法](#使用方法)
+- [编译与安装](#编译与安装)
+- [配置说明](#配置说明)
+- [已知限制](#已知限制)
+- [MRQ 分支改进](#mrq-分支改进)
+- [与原版的区别](#与原版的区别)
+- [许可证](#许可证)
+
+---
+
+## 物品移动功能
+
+### 滚轮移动（Scrolling）
+
+在物品槽位上滚动鼠标滚轮来移动物品：
+
+| 模式 | 操作 | 说明 |
+|------|------|------|
+| **单物品 (Single)** | 滚轮 | 每次移动 1 个物品 |
+| **整组 (Stacks)** | Shift + 滚轮 | 每次移动一整组 |
+| **匹配 (Matching)** | Alt + 滚轮 | 移动容器中所有相同类型物品 |
+| **全部 (Everything)** | Alt+Shift + 滚轮 | 移动当前容器中所有物品 |
+| **整组回退 (Stacks Fallback)** | 自动 | 当 Shift+点击不可用时使用替代点击方式 |
+
+### 拖拽移动（Drag Moving）
+
+按住修饰键 + 左键拖拽划过多个格子来批量操作：
+
+| 模式 | 操作 | 说明 |
+|------|------|------|
+| **拖拽整组** | Shift + 左键拖拽 | 移动拖过格子的整组物品 |
+| **拖拽单个** | Ctrl + 左键拖拽 | 每个拖过的格子移出 1 个 |
+| **拖拽匹配** | Alt + 左键拖拽 | 移动所有与拖过格子相同类型的物品 |
+| **拖拽留一** | Shift + 中键拖拽 | 全部移走，每个格子留 1 个 |
+| **一键移动全部** | Alt+Shift + 左键点击 | 当前容器所有物品一次性移到另一容器 |
+
+### 拖拽丢弃（Drag Dropping）
+
+| 模式 | 操作 | 说明 |
+|------|------|------|
+| **拖拽丢弃整组** | Shift+Q + 左键拖拽 | 丢弃拖过格子的整组物品 |
+| **拖拽丢弃单个** | Q + 左键拖拽 | 每个拖过的格子丢弃 1 个 |
+| **拖拽丢留一** | Shift+Q + 中键拖拽 | 全部丢弃，每个格子留 1 个 |
+
+### WASD 方向移动
+
+在容器中，W/S + 鼠标点击上下移动物品：
+
+| 操作 | 效果 |
+|------|------|
+| W + 左键 | 向上移动 1 个 |
+| S + 左键 | 向下移动 1 个 |
+| Shift + W/S + 左键 | 上下移动整组 |
+| Alt + W/S + 左键 | 上下移动匹配 |
+| W/S + 中键 | 上下移动留一 |
+
+---
+
+## 合成辅助功能
+
+### 配方存储与管理
+
+- 内置 **144 个配方存储位**（8 页 × 18 个/页）
+- **存储配方**: 在合成界面对输出格使用中键/拾取键，保存当前合成布局和产物
+- **查看配方**: 按住 **A 键**（可配置），在 GUI 左侧渲染已存储的配方列表
+- **选择配方**: 滚轮翻页、数字键 1–9 快速选择、或鼠标直接点击
+- **自动填充**: 选中配方后自动从背包取材料填入合成网格
+- **持久化**: 配方保存到 `config/itemscroller/recipes_世界名.nbt`
+
+### 批量合成
+
+| 功能 | 操作 | 说明 |
+|------|------|------|
+| **一键合成全部** | Ctrl + C | 将当前配方的所有材料合成为产物 |
+| **持续批量合成** | Ctrl+Alt+C 按住 | 反复填充→合成→丢弃产物循环 |
+| **右键合成一组** | 右键点击合成输出格 | 反复合成直到满一组或材料耗尽 |
+| **移动合成结果** | Ctrl + M | 将所有结果产物移到另一个容器 |
+| **丢弃合成结果** | Ctrl + T | 将所有结果产物丢弃 |
+
+批量合成支持**普通模式**和**交换模式**（Swaps Only，仅用槽位交换不产生部分合成），可配置执行间隔和限速。
+
+---
+
+## 村民交易辅助功能
+
+| 功能 | 操作 | 说明 |
+|------|------|------|
+| **交易滚轮** | Shift + 滚轮 | 向上：取产物到背包 / 向下：填入购买材料 |
+| **收藏交易** | 中键点击交易 | 标记为收藏 |
+| **全局收藏** | Shift + 中键点击 | 按物品类型全局收藏，跨村民有效 |
+| **一键完成收藏** | 快捷键 | 自动依次执行所有收藏交易直到材料耗尽 |
+| **交易列表位置记忆** | 自动 | 重新打开交易 GUI 时恢复上次滚动位置 |
+
+---
+
+## 物品丢弃功能
+
+| 功能 | 操作 | 说明 |
+|------|------|------|
+| **丢弃所有匹配** | Ctrl+Shift+Q | 丢弃当前容器中所有相同类型物品 |
+| **Shift 丢弃** | Shift + 拖出容器外 + 左键 | 丢弃光标上所有匹配物品 |
+| **Shift 放置** | Shift + 左键到空格 | 将背包所有同类型物品移到容器 |
+
+---
+
+## 使用方法
+
+1. **打开容器**（箱子、背包、熔炉等）
+2. **滚轮移动**: 鼠标悬停在物品上 → 滚轮（单物品）/ Shift+滚轮（整组）
+3. **拖拽移动**: 按住 Shift → 在物品格上拖拽左键（批量整组移动）
+4. **合成辅助**: 打开合成台 → 摆好配方 → 中键输出格存储 → 按 A 查看已存配方
+5. **村民交易**: 打开村民 GUI → 中键收藏交易 → 快捷键批量完成
+6. **配置界面**: 按 `I + C` 打开
+
+---
+
+## 编译与安装
+
+```bash
+git clone https://github.com/marongqiang/itemscroller_MRQ.git
+cd itemscroller_MRQ
+./gradlew build
+# 编译产物位于 build/libs/
+```
+
+**依赖**: malilib 0.16.4+, Fabric Loader 0.14.21+, Fabric API
+
+---
+
+## 配置说明
+
+配置文件: `config/itemscroller.json`
+
+所有功能都可独立开关，快捷键可自定义。主要配置组：
+- **Generic**: 通用参数（滚轮方向反转、数据包限速等）
+- **Toggles**: 功能开关（合成辅助、村民交易、各类滚轮/拖拽模式）
+- **Hotkeys**: 快捷键绑定
+
+**数据包限速**: 针对限制数据包频率的服务器，可将点击包放入队列按可配置速率发送（默认 4 个/tick）。
+
+---
+
+## 已知限制
+
+- 在 Spigot/Paper 等限制数据包频率的服务器上需要启用 Packer Rate Limit
+- 拖拽移动在创造模式物品栏中行为不完全一致
+- 部分合成台（如其他模组的特殊合成台）可能不支持配方存储
+- 村民交易收藏在交易解锁后会失效（需重新收藏新解锁的交易）
+- 快速操作可能触发服务器反作弊检测
+
+---
+
+## MRQ 分支改进
 
 ### 严重修复
-- **村民交易索引错误**: `villagerTradeEverythingPossibleWithAllFavoritedTrades()` 中循环使用 `favorites.getInt(i)` 获取实际交易索引，修复用循环计数器直接当交易索引的 bug
-- **I/O 资源泄漏**: `RecipeStorage` 和 `VillagerDataStorage` 中 FileInputStream/FileOutputStream 改为 try-with-resources
-- **拖拽状态清理**: `stopDragging()` 增加重置 `lastPosX`/`lastPosY`/`slotNumberLast`，防止下次拖拽从错误位置开始
+| 问题 | 位置 | 修复内容 |
+|------|------|---------|
+| **村民交易索引错误** | `InventoryUtils.java` | `villagerTradeEverythingPossibleWithAllFavoritedTrades` 中循环使用 `favorites.getInt(i)` 获取实际交易索引，修复用循环计数器直接当交易索引的 bug |
+| **拖拽状态残留** | `InventoryUtils.java` | `stopDragging()` 增加重置 `lastPosX`/`lastPosY`/`slotNumberLast`，防止下次拖拽从错误位置开始 |
 
 ### 安全修复
-- `RecipePattern.readFromNBT()`: NBT Length 添加上限 9，防止损坏文件导致 OOM
+| 问题 | 位置 | 修复内容 |
+|------|------|---------|
+| **FileInputStream 泄漏** | `RecipeStorage.java` | try-with-resources |
+| **FileOutputStream 泄漏** | `RecipeStorage.java` | try-with-resources |
+| **FileInputStream 泄漏** | `VillagerDataStorage.java` | try-with-resources |
+| **FileOutputStream 泄漏** | `VillagerDataStorage.java` | try-with-resources |
+| **NBT Length 无上限** | `RecipePattern.java` | 添加上限 9，防止损坏文件触发 OOM |
 
 ### 构建修复
-- `build.gradle`: Loom 版本 1.4→1.2，移除已废弃的 `sourceSourceSets` 配置
+- `build.gradle`: Loom 版本 1.4→1.2，移除已废弃的 `sourceSourceSets`
 
-Compiling
-=========
-* Clone the repository
-* Open a command prompt/terminal to the repository directory
-* run 'gradlew build'
-* The built jar file will be in build/libs/
+---
+
+## 与原版的区别
+
+| 方面 | 原版 | MRQ |
+|------|------|-----|
+| 村民交易收藏 | 循环计数器当交易索引（Bug） | ✅ 使用实际交易索引 |
+| 拖拽状态清理 | 不完整 | ✅ 完整重置位置信息 |
+| I/O 操作 | 手动 close | ✅ try-with-resources |
+| NBT 校验 | 无上限 | ✅ Length≤9 |
+| 构建 | Loom 1.4 + 废弃属性 | ✅ Loom 1.2 兼容 |
+
+---
+
+## 许可证
+
+LGPL-3.0
+
+---
+
+## 相关链接
+
+- [malilib MRQ](https://github.com/marongqiang/malilib_MRQ)（必要依赖）
+- [Litematica MRQ](https://github.com/marongqiang/litematica_MRQ)
+- [Tweakeroo MRQ](https://github.com/marongqiang/tweakeroo_MRQ)
