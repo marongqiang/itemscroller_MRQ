@@ -1,0 +1,200 @@
+{
+    "modmenu.descriptionTranslation.itemscroller": "在容器界面中用滚轮或拖过格子快速移动物品",
+    "itemscroller.hotkeys.category.hotkeys": "Item Scroller 快捷键",
+
+    "itemscroller.gui.button.config_gui.generic": "通用",
+    "itemscroller.gui.button.config_gui.hotkeys": "快捷键",
+    "itemscroller.gui.button.config_gui.toggles": "开关",
+
+    "itemscroller.gui.label.recipe_page": "第 %d / %d 页",
+    "itemscroller.gui.label.trades": "交易",
+    "itemscroller.gui.label.trade_uses": "交易次数: %d / %d",
+
+    "itemscroller.gui.title.configs": "Item Scroller 设置",
+
+    "itemscroller.message.toggled_mod_off": "已将 Item Scroller 全部功能 §c关闭",
+    "itemscroller.message.toggled_mod_on": "已将 Item Scroller 全部功能 §a开启",
+
+    "config.name.carpetctrlqcraftingenabledonserver": "Carpet 服务器 Ctrl+Q 合成",
+    "config.comment.carpetctrlqcraftingenabledonserver": "若服务器安装了 Carpet 模组且开启了 ctrlQCrafting 选项，请设为 true。\n这只会改变在「丢掷键+Shift+右键合成」时 Item Scroller 所使用的方法。",
+
+    "config.name.clientcraftingfixon1.12": "客户端 1.12+ 合成输出修正",
+    "config.comment.clientcraftingfixon1.12": "在客户端直接刷新合成格输出。可修复 1.12 中快速/批量合成、右键合整组等特性无法使用的问题。",
+
+    "config.name.craftingrenderrecipeitems": "合成界面显示配方材料",
+    "config.comment.craftingrenderrecipeitems": "开启后，在合成配方视图中会一并绘制配方格中的物品。",
+
+    "config.name.modmaintoggle": "模组总开关",
+    "config.comment.modmaintoggle": "可关闭本模组的全部功能。",
+
+    "config.name.masscraftinhibitmidupdates": "批量合成中抑制中间刷新",
+    "config.comment.masscraftinhibitmidupdates": "在向合成格放物品时避免半途中刷新配方输出，可减少因频繁重算合成配方带来的 CPU 占用。",
+
+    "config.name.masscraftinterval": "批量合成重复间隔(刻)",
+    "config.comment.masscraftinterval": "批量合成操作每隔多少游戏刻重复一次。",
+
+    "config.name.masscraftiterations": "批量合成每轮尝试次数",
+    "config.comment.masscraftiterations": "每次执行批量合成时尝试的轮数。\n对不可堆叠物品、背包满或「小配方」等情况需要调大，\n因为 Shift+点击合成到背包时每次可能只出 1～2 个。",
+
+    "config.name.masscraftswapsonly": "批量合成都用换位包",
+    "config.comment.masscraftswapsonly": "使用较新的、仅用槽位对换的填充方式。\n§6仅使用对换包：无法部分合成，也不会拆分堆叠。",
+
+    "config.name.packetratelimit": "每刻发包上限",
+    "config.comment.packetratelimit": "在「限制点击包频率」开启时，每游戏刻可发送的模拟点选包数量上限。",
+
+    "config.name.craftingrecipessavetofile": "将合成配方存到文件",
+    "config.comment.craftingrecipessavetofile": "开启后，合成相关配方会保存到\nminecraft/itemscroller/recipes_世界名或服务器名.nbt，\n重启游戏后仍保留。",
+
+    "config.name.craftingrecipessavefileisglobal": "配方文件为全局",
+    "config.comment.craftingrecipessavefileisglobal": "为 true 时使用全局一份配方文件，不区分世界/服务器。",
+
+    "config.name.ratelimitclickpackets": "限制点选包发送频率",
+    "config.comment.ratelimitclickpackets": "为兼容 Spigot 等会限制客户端发包的服务器，\n将模拟的槽位点击包排队并按时间限流发送。每刻数量见「每刻发包上限」。",
+
+    "config.name.reversescrolldirectionsingle": "单件模式反转滚动方向",
+    "config.comment.reversescrolldirectionsingle": "在「一次移动一件」的滚动模式里反转方向。",
+
+    "config.name.reversescrolldirectionstacks": "整组模式反转滚动方向",
+    "config.comment.reversescrolldirectionstacks": "在「整组移动」的滚动模式里反转方向。",
+
+    "config.name.userecipecaching": "缓存上一配方",
+    "config.comment.userecipecaching": "在取合成输出物品时缓存最近使用过的配方，可明显降低大量合成时的 CPU 占用。",
+
+    "config.name.useslotpositionawarescrolldirection": "依槽位屏幕位置决定方向",
+    "config.comment.useslotpositionawarescrolldirection": "按槽在屏幕上的上下决定物品移动方向。复杂布局下可能很怪，谨慎使用。",
+
+    "config.name.villagertradeuseglobalfavorites": "使用全局交易收藏(按物品种类)",
+    "config.comment.villagertradeuseglobalfavorites": "是否启用按物品种类记忆的全局村民交易「收藏」偏好。",
+
+    "config.name.villagertradelistrememberscrollposition": "交易列表记忆滚动条位置",
+    "config.comment.villagertradelistrememberscrollposition": "再次打开交易界面时恢复上次在列表中滚到的位置。",
+
+    "config.name.enablecraftingfeatures": "合成格滚动与配方",
+    "config.comment.enablecraftingfeatures": "在合成格与内置 18 个配方位之间用滚轮移动物品，并支持配方功能。\n按住配方键可查看/切换所存配方；可滚轮或按数字键选槽；\n在配置为合成产出的槽上对方块按选取键可将配方存入当前选中的配方位。\n支持列表见 scrollableCraftingGrids 配置。",
+
+    "config.name.enabledropkeydropmatching": "丢掷键：丢弃全部同类",
+    "config.comment.enabledropkeydropmatching": "允许用热键在容器内一次丢出与指向堆叠同类的所有物品。",
+
+    "config.name.enablerightclickcraftingonestack": "右键合成产出一整组(上限)",
+    "config.comment.enablerightclickcraftingonestack": "对已设为合成产出槽的格子右键，可一次尽量合成到一整组(受可用材料限制)。",
+
+    "config.name.enablescrollingeverything": "整容器移动(修饰键+滚轮)",
+    "config.comment.enablescrollingeverything": "按住「整容器移动」修饰键在堆叠上滚轮，可一次把侧栏中全部物品移向另一侧。",
+
+    "config.name.enablescrollingmatchingstacks": "同类堆叠全移(修饰键+滚轮)",
+    "config.comment.enablescrollingmatchingstacks": "按住「只移同类」修饰键在堆叠上滚轮，可一次移动所有相同物品的堆叠。",
+
+    "config.name.enablescrollingsingle": "单件滚轮",
+    "config.comment.enablescrollingsingle": "在堆叠上滚轮，一次只移动 1 个物品。",
+
+    "config.name.enablescrollingstacks": "整组滚轮",
+    "config.comment.enablescrollingstacks": "在堆叠上滚轮，一次移动整组。",
+
+    "config.name.enablescrollingstacksfallback": "整组「兼容」回退",
+    "config.comment.enablescrollingstacksfallback": "为原版合成台等 Shift+点无效的场景提供整组滚动的「回退」模式。",
+
+    "config.name.enablescrollingvillager": "村民交易界面",
+    "config.comment.enablescrollingvillager": "为村民交易界面提供特殊处理(原版通常无法对交易格 Shift+点)。\n在交易产出槽上按住 Shift 并滚轮。",
+
+    "config.name.enableshiftdropitems": "Shift+丢整组同类",
+    "config.comment.enableshiftdropitems": "丢物品时若按住 Shift，可一次丢出与点击堆叠同类的所有格。",
+
+    "config.name.enableshiftplaceitems": "Shift+点空槽放整组同类",
+    "config.comment.enableshiftplaceitems": "在空槽上放置时若按住 Shift，可一次从另一侧移来所有同种物品堆叠。",
+
+    "config.name.enablevillagertradefeatures": "村民交易：收藏与快速交易",
+    "config.comment.enablevillagertradefeatures": "中键标记收藏交易、在交易列表上右键可尽量完成该单条交易等。\n(Shift+滚交易产出是独立选项，不受此项关闭影响。)",
+
+    "config.name.openconfiggui": "打开内嵌设置(热键)",
+    "config.comment.openconfiggui": "打开 Masa 类模组的内嵌设置界面(多个模组若共用同名配置键，以资源加载靠后者为准)。",
+
+    "config.name.crafteverything": "当前配方能合多少合多少(一次)",
+    "config.comment.crafteverything": "用当前选中的合成配方，尽可能合成一次(受材料限制)。",
+
+    "config.name.dropallmatching": "丢出与指向相同的全部",
+    "config.comment.dropallmatching": "从当前侧容器丢出与鼠标指向物品种类相同的所有堆叠。",
+
+    "config.name.masscraft": "批量合成并持续丢出(按住)",
+    "config.comment.masscraft": "按住时按当前配方持续批量合成，并把结果丢出(类似按住执行)。",
+
+    "config.name.movecraftresults": "移动当前配方所有产物",
+    "config.comment.movecraftresults": "将当前配方在玩家物品栏中产生的所有产物移到另一侧容器。",
+
+    "config.name.recipeview": "配方界面",
+    "config.comment.recipeview": "显示 Item Scroller 的配方/存储界面。",
+
+    "config.name.slotdebug": "槽位/界面调试",
+    "config.comment.slotdebug": "在控制台输出当前指向槽或 GUI 的调试信息。",
+
+    "config.name.storerecipe": "存储配方到当前槽位",
+    "config.comment.storerecipe": "在指向合成格产物时，将配方存入当前选中的配方记忆位(鼠标中键)。",
+
+    "config.name.throwcraftresults": "丢出当前配方所有产物",
+    "config.comment.throwcraftresults": "从玩家栏将当前配方的所有合成产物丢到地上。",
+
+    "config.name.togglemodonoff": "开/关整个模组",
+    "config.comment.togglemodonoff": "切换 Item Scroller 所有功能开或关。",
+
+    "config.name.villagertradefavorites": "执行村民收藏交易",
+    "config.comment.villagertradefavorites": "尽量与当前村民所有已「收藏」的交易完成换货。",
+
+    "config.name.keydragdropleaveone": "拖选+丢(每堆留 1 个)",
+    "config.comment.keydragdropleaveone": "在拖过多个堆叠时：丢光每堆，但每堆留 1 个。配合 Shift+丢+鼠键 绑定。",
+
+    "config.name.keydragdropsingle": "拖选+丢(每堆 1 个)",
+    "config.comment.keydragdropsingle": "在拖过多个堆叠时，每堆只丢 1 个。",
+
+    "config.name.keydragdropstacks": "拖选+丢(整组)",
+    "config.comment.keydragdropstacks": "在拖过多个堆叠时，整组丢出。",
+
+    "config.name.keydragmoveleaveone": "拖选+移(每堆留 1 个)",
+    "config.comment.keydragmoveleaveone": "拖过多个堆叠时移走物品，但每堆留 1 个。",
+
+    "config.name.keydragmovematching": "拖选+移(只移同类)",
+    "config.comment.keydragmovematching": "只移动与首个拖过堆叠同类的物品。",
+
+    "config.name.keydragmoveone": "拖选+移(每堆 1 个)",
+    "config.comment.keydragmoveone": "从每个被拖过的堆叠中移走 1 个。",
+
+    "config.name.keydragmovestacks": "拖选+移(整组)",
+    "config.comment.keydragmovestacks": "把拖过的每堆整组移走。",
+
+    "config.name.keymoveeverything": "点击堆叠=整侧全移(修饰+点击)",
+    "config.comment.keymoveeverything": "按下该键后点击一堆物品，会尝试将来源侧**全部**物品移到另一侧(需目标侧能接收)。",
+
+    "config.name.wsmovedownleaveone": "W/S 下方向：每堆留 1",
+    "config.comment.wsmovedownleaveone": "在背包「向下」一列/一组槽位间移动，每堆留 1 个。",
+
+    "config.name.wsmovedownmatching": "W/S 下方向：只移同类",
+    "config.comment.wsmovedownmatching": "在背包中向下移动时只移动与当前堆叠同类的堆叠。",
+
+    "config.name.wsmovedownsingle": "W/S 下方向：单件",
+    "config.comment.wsmovedownsingle": "沿背包列向下一次移 1 个物品。",
+
+    "config.name.wsmovedownstacks": "W/S 下方向：整组",
+    "config.comment.wsmovedownstacks": "沿背包列向下一次移一整组。",
+
+    "config.name.wsmoveupleaveone": "W/S 上方向：每堆留 1",
+    "config.comment.wsmoveupleaveone": "在背包「向上」移动时，每堆留 1 个。",
+
+    "config.name.wsmoveupmatching": "W/S 上方向：只移同类",
+    "config.comment.wsmoveupmatching": "在背包中向上只移动同类的堆叠。",
+
+    "config.name.wsmoveupsingle": "W/S 上方向：单件",
+    "config.comment.wsmoveupsingle": "沿背包列向上一次移 1 个。",
+
+    "config.name.wsmoveupstacks": "W/S 上方向：整组",
+    "config.comment.wsmoveupstacks": "沿背包列向上一次移一整组。",
+
+    "config.name.modifiermoveeverything": "修饰：整侧全移(滚轮)",
+    "config.comment.modifiermoveeverything": "在堆叠上滚轮时若按住，则尝试一次移动整个容器侧到另一侧。",
+
+    "config.name.modifiermovematching": "修饰：只移同类(滚轮)",
+    "config.comment.modifiermovematching": "在堆叠上滚轮时若按住，只移动与当前格相同 ID 的堆叠。",
+
+    "config.name.modifiermovestack": "修饰：整组(滚轮)",
+    "config.comment.modifiermovestack": "在堆叠上滚轮时若按住，一次移动整组(类似 Shift+点击)。",
+
+    "config.name.modifiertogglevillagerglobalfavorite": "修饰：切换交易全局收藏(中键时)",
+    "config.comment.modifiertogglevillagerglobalfavorite": "对交易行中键收藏时若按住，则切换**全局**(按物品种类)的收藏，\n用于尚未设置村民本地收藏时的偏好。"
+}

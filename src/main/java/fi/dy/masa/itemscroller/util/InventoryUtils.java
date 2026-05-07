@@ -26,7 +26,6 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.RecipeInputInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.CraftingRecipe;
-import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.registry.Registries;
 import net.minecraft.screen.MerchantScreenHandler;
@@ -111,22 +110,20 @@ public class InventoryUtils
         {
             ItemStack stack = ItemStack.EMPTY;
             CraftingRecipe recipe = Configs.Generic.USE_RECIPE_CACHING.getBooleanValue() ? lastRecipe : null;
-            RecipeEntry<?> recipeEntry = null;
 
             if (recipe == null || recipe.matches(craftMatrix, world) == false)
             {
-                Optional<RecipeEntry<CraftingRecipe>> optional = world.getRecipeManager().getFirstMatch(RecipeType.CRAFTING, craftMatrix, world);
-                recipe = optional.map(RecipeEntry::value).orElse(null);
-                recipeEntry = optional.orElse(null);
+                Optional<CraftingRecipe> optional = world.getRecipeManager().getFirstMatch(RecipeType.CRAFTING, craftMatrix, world);
+                recipe = optional.orElse(null);
             }
 
             if (recipe != null)
             {
                 if ((recipe.isIgnoredInRecipeBook() ||
                      world.getGameRules().getBoolean(GameRules.DO_LIMITED_CRAFTING) == false ||
-                     ((ClientPlayerEntity) player).getRecipeBook().contains(recipeEntry)))
+                     ((ClientPlayerEntity) player).getRecipeBook().contains(recipe)))
                 {
-                    inventoryCraftResult.setLastRecipe(recipeEntry);
+                    inventoryCraftResult.setLastRecipe(recipe);
                     stack = recipe.craft(craftMatrix, MinecraftClient.getInstance().getNetworkHandler().getRegistryManager());
                 }
 
@@ -412,6 +409,9 @@ public class InventoryUtils
     {
         activeMoveAction = MoveAction.NONE;
         DRAGGED_SLOTS.clear();
+        lastPosX = -1;
+        lastPosY = -1;
+        slotNumberLast = -1;
     }
 
     private static boolean dragMoveFromSlotAtPosition(HandledScreen<? extends ScreenHandler> gui,
@@ -799,10 +799,11 @@ public class InventoryUtils
             MerchantScreenHandler handler = ((MerchantScreen) screen).getScreenHandler();
             IntArrayList favorites = VillagerDataStorage.getInstance().getFavoritesForCurrentVillager(handler).favorites;
 
-            for (int index = 0; index < favorites.size(); ++index)
+            for (int i = 0; i < favorites.size(); ++i)
             {
-                VillagerUtils.switchToTradeByVisibleIndex(index);
-                villagerTradeEverythingPossibleWithTrade(index);
+                int tradeIndex = favorites.getInt(i);
+                VillagerUtils.switchToTradeByVisibleIndex(tradeIndex);
+                villagerTradeEverythingPossibleWithTrade(tradeIndex);
             }
 
             villagerClearTradeInputSlots();

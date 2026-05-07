@@ -93,7 +93,7 @@ public class RecipePattern
             int count = tagIngredients.size();
             int length = nbt.getInt("Length");
 
-            if (length > 0)
+            if (length > 0 && length <= 9)
             {
                 this.ensureRecipeSizeAndClearRecipe(length);
             }

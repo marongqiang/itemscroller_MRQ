@@ -216,9 +216,10 @@ public class VillagerDataStorage
 
             if (file.exists() && file.isFile() && file.canRead())
             {
-                FileInputStream is = new FileInputStream(file);
-                this.readFromNBT(NbtIo.readCompressed(is, NbtTagSizeTracker.ofUnlimitedBytes()));
-                is.close();
+                try (FileInputStream is = new FileInputStream(file))
+                {
+                    this.readFromNBT(NbtIo.readCompressed(is));
+                }
             }
         }
         catch (Exception e)
@@ -243,9 +244,10 @@ public class VillagerDataStorage
 
                 File fileTmp  = new File(saveDir, this.getFileName() + ".tmp");
                 File fileReal = new File(saveDir, this.getFileName());
-                FileOutputStream os = new FileOutputStream(fileTmp);
-                NbtIo.writeCompressed(this.writeToNBT(new NbtCompound()), os);
-                os.close();
+                try (FileOutputStream os = new FileOutputStream(fileTmp))
+                {
+                    NbtIo.writeCompressed(this.writeToNBT(new NbtCompound()), os);
+                }
 
                 if (fileReal.exists())
                 {
